@@ -1,0 +1,22 @@
+{
+  "name": "marmokbot",
+  "version": "4.0.0",
+  "description": "MarmokBot rewritten in typecsript",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "clear": "rm -rf dest",
+    "start": "node ./dest/index"
+  },
+  "author": "Satont <satontworldwide@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js",
+    "klasa": "github:dirigeants/klasa",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.16"
+  }
+}
