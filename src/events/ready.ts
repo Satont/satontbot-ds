@@ -1,4 +1,4 @@
-import { Event } from '../typings/events'
+import { Event } from '../typings/discordjs'
 import MarmokBot from '../client/marmokbot'
 
 export default class Ready implements Event {

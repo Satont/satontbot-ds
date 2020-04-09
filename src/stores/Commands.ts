@@ -1,7 +1,7 @@
 import MarmokBot from '../client/marmokbot'
 import { resolve } from 'path'
-import { Command } from '../typings/commands'
 import getFiles from '../helpers/getFiles'
+import { Command } from '../typings/discordjs';
 
 export default class CommandStore {
   client: MarmokBot

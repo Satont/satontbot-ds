@@ -1,9 +1,8 @@
 import MarmokBot from '../client/marmokbot'
 import { resolve } from 'path'
-import { Command } from '../typings/commands'
 import getFiles from '../helpers/getFiles'
 import { Guild } from '../models/Guild'
-import { Structures } from 'discord.js'
+import { Command } from '../typings/discordjs';
 
 export default class Settings {
   client: MarmokBot
@@ -36,7 +35,7 @@ export default class Settings {
         })
 
         if (!isNew) await created.update({ name: guild.name })
-  
+
         this.client.guilds
         guild.settings = {}
       } catch (error) {

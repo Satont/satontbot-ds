@@ -1,4 +1,4 @@
-import { Event } from '../typings/events'
+import { Event } from '../typings/discordjs'
 import MarmokBot from '../client/marmokbot'
 import { Message } from 'discord.js'
 import CommandHandler from '../struct/CommandHandler'

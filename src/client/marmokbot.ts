@@ -1,12 +1,12 @@
 import { Client } from 'discord.js'
 import config from '../data/config'
 import { Collection } from 'discord.js'
-import { Event } from '../typings/events'
-import { Command } from '../typings/commands'
 
 import CommandStore from '../stores/Commands'
 import EventStore from '../stores/Events'
 import SettingsStore from '../stores/Settings'
+import { Command } from '../typings/discordjs';
+import { Event } from '../typings/discordjs';
 
 export default class MarmokBot extends Client {
   public connected: boolean = false
