@@ -1,6 +1,6 @@
 import { Client, ClientEvents, Guild } from "discord.js";
 import { Event } from './events.d'
-import { Command } from './events.d'
+import { Command } from './commands';
 
 declare module 'discord.js' {
   interface Client {
