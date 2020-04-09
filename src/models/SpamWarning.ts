@@ -1,18 +1,19 @@
-import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, AutoIncrement } from 'sequelize-typescript'
+import { Table, Column, Model,  PrimaryKey, AllowNull, DataType, AutoIncrement } from 'sequelize-typescript'
  
 @Table({
   tableName: 'spam_warnings',
 })
 export class SpamWarning extends Model<SpamWarning> {
   @AutoIncrement
+  @PrimaryKey
   @Column
   public id: number;
  
   @AllowNull(false)
-  @Column(DataType.BIGINT)
+  @Column(DataType.TEXT)
   public userId: number
 
   @AllowNull(false)
-  @Column(DataType.BIGINT)
+  @Column(DataType.TEXT)
   public guildId: number
 }

@@ -1,4 +1,4 @@
-import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, Default, AutoIncrement } from 'sequelize-typescript'
+import { Table, Column, Model, PrimaryKey, AllowNull, DataType, Default, AutoIncrement } from 'sequelize-typescript'
  
 @Table({
   tableName: 'users',
@@ -10,11 +10,11 @@ export class User extends Model<User> {
   public id: number;
  
   @AllowNull(false)
-  @Column(DataType.BIGINT)
+  @Column(DataType.TEXT)
   public userId: number
 
   @AllowNull(false)
-  @Column(DataType.BIGINT)
+  @Column(DataType.TEXT)
   public guildId: number
 
   @Column(DataType.TEXT)

@@ -5,6 +5,7 @@ import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, Default,
 })
 export class Guild extends Model<Guild> {
   @AutoIncrement
+  @PrimaryKey
   @Column(DataType.INTEGER)
   public id: number;
 
@@ -13,7 +14,7 @@ export class Guild extends Model<Guild> {
   public name: string
 
   @AllowNull(false)
-  @Column(DataType.BIGINT)
+  @Column(DataType.TEXT)
   public guildId: number
 
   @Default('!')

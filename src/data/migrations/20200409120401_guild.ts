@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable('guilds', table => {
     table.increments('id').primary(),
     table.text('name'),
-    table.bigInteger('guildId').unique().notNullable(),
+    table.text('guildId').unique().notNullable(),
     table.string('prefix')
   })
 }

@@ -4,8 +4,8 @@ export async function up(knex: Knex): Promise<any> {
   return await Promise.all([
     knex.schema.createTable('users', table => {
       table.increments('id'),
-      table.bigInteger('userId').unique().notNullable(),
-      table.bigInteger('guildId').notNullable(),
+      table.text('userId').unique().notNullable(),
+      table.text('guildId').notNullable(),
       table.text('username').nullable(),
       table.integer('time').defaultTo(0),
       table.integer('messages').defaultTo(0),
@@ -14,13 +14,13 @@ export async function up(knex: Knex): Promise<any> {
     }),
     knex.schema.createTable('spam_warnings', table => {
       table.increments('id').primary(),
-      table.bigInteger('userId').unique().notNullable(),
-      table.bigInteger('guildId').notNullable()
+      table.text('userId').unique().notNullable(),
+      table.text('guildId').notNullable()
     }),
     knex.schema.createTable('links_warnings', table => {
       table.increments('id').primary(),
-      table.bigInteger('userId').unique().notNullable(),
-      table.bigInteger('guildId').notNullable()
+      table.text('userId').unique().notNullable(),
+      table.text('guildId').notNullable()
     })
   ])
 }
