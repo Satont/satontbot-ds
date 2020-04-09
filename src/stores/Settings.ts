@@ -28,19 +28,20 @@ export default class Settings {
   }
 
   async init() {
-    return await Promise.all([
-      this.client.guilds.cache.each(async (guild) => {
+    for await (const [, guild] of this.client.guilds.cache) {
+      try {
         const [created, isNew]: [Guild, boolean] = await Guild.findOrCreate({
           where: { guildId: guild.id },
           defaults: { guildId: guild.id, name: guild.name }
         })
-        
+
         if (!isNew) await created.update({ name: guild.name })
   
         this.client.guilds
         guild.settings = {}
-        return true
-      })
-    ])
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 }

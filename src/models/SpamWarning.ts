@@ -1,12 +1,10 @@
-import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType } from 'sequelize-typescript'
+import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, AutoIncrement } from 'sequelize-typescript'
  
 @Table({
   tableName: 'spam_warnings',
 })
 export class SpamWarning extends Model<SpamWarning> {
-  @AllowNull(false)
-  @Unique
-  @PrimaryKey
+  @AutoIncrement
   @Column
   public id: number;
  

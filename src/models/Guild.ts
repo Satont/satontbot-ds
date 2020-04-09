@@ -1,13 +1,11 @@
-import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, Default } from 'sequelize-typescript'
+import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, Default, AutoIncrement } from 'sequelize-typescript'
  
 @Table({
   tableName: 'guilds',
 })
 export class Guild extends Model<Guild> {
-  @AllowNull(false)
-  @Unique
-  @PrimaryKey
-  @Column
+  @AutoIncrement
+  @Column(DataType.INTEGER)
   public id: number;
  
   @AllowNull(false)
