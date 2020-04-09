@@ -28,6 +28,10 @@ export interface Command {
   run(message: Message, args: string[]): Promise<any> | any | void,
   init?(): Promise<any> | any | void,
   description?: string,
-  aliases?: string[]
+  aliases?: string[],
+  cooldown?: {
+    type: 'user' | 'global',
+    time: number,
+  }
 }
 
