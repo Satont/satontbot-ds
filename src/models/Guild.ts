@@ -2,6 +2,7 @@ import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, Default,
  
 @Table({
   tableName: 'guilds',
+  timestamps: false,
 })
 export class Guild extends Model<Guild> {
   @AutoIncrement

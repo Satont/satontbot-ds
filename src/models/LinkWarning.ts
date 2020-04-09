@@ -2,6 +2,7 @@ import { Table, Column, Model, PrimaryKey, AllowNull, DataType, AutoIncrement } 
  
 @Table({
   tableName: 'links_warnings',
+  timestamps: false,
 })
 export class LinkWarning extends Model<LinkWarning> {
   @AutoIncrement

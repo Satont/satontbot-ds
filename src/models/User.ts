@@ -2,6 +2,7 @@ import { Table, Column, Model, PrimaryKey, AllowNull, DataType, Default, AutoInc
  
 @Table({
   tableName: 'users',
+  timestamps: false,
 })
 export class User extends Model<User> {
   @AutoIncrement

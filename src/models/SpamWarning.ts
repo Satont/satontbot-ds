@@ -2,6 +2,7 @@ import { Table, Column, Model,  PrimaryKey, AllowNull, DataType, AutoIncrement }
  
 @Table({
   tableName: 'spam_warnings',
+  timestamps: false,
 })
 export class SpamWarning extends Model<SpamWarning> {
   @AutoIncrement
