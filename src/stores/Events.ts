@@ -10,7 +10,7 @@ export default class EventStore {
     this.client = client
   }
 
-  async loadEvents() {
+  async load() {
     const eventFiles = readdirSync(resolve(__dirname, '..', 'events'))
 
     for (const file of eventFiles) {

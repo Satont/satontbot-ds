@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
+    "typeRoots" : ["./src/typings", "node_modules/@types"]
   },
   "include": ["src", "src/index.ts"],
   "exclude": ["node_modules"],

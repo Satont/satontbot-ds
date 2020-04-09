@@ -1,6 +1,5 @@
 import MarmokBot from '../client/marmokbot'
 import { resolve } from 'path'
-import { readdirSync } from 'fs'
 import { Command } from '../typings/commands'
 import getFiles from '../helpers/getFiles'
 
@@ -11,7 +10,7 @@ export default class CommandStore {
     this.client = client
   }
 
-  async loadCommands() {
+  async load() {
     const commandFiles: string[] = []
     for await (const file of getFiles(resolve(__dirname, '..', 'commands'))) commandFiles.push(file)
 
@@ -25,6 +24,5 @@ export default class CommandStore {
       this.client.commands.set(command.name, command)
     }
     console.log(commandFiles.length + ' commands was loaded.')
-    console.log(this.client.commands)
   }
 }
