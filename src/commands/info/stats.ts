@@ -1,4 +1,4 @@
-import { Command } from "../../typings/commands";
+import { Command } from "../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
 import MarmokBot from "../../client/marmokbot";

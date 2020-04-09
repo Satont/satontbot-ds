@@ -1,4 +1,4 @@
-import { Event } from '../typings/events'
+import { Event } from '../typings/discordjs'
 import { VoiceState } from 'discord.js'
 import MarmokBot from '../client/marmokbot'
 import { CategoryChannel } from 'discord.js'

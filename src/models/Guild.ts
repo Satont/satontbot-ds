@@ -7,7 +7,7 @@ export class Guild extends Model<Guild> {
   @AutoIncrement
   @Column(DataType.INTEGER)
   public id: number;
- 
+
   @AllowNull(false)
   @Column(DataType.TEXT)
   public name: string

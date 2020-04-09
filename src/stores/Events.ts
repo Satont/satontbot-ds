@@ -1,7 +1,7 @@
 import MarmokBot from '../client/marmokbot'
 import { resolve } from 'path'
 import { readdirSync } from 'fs'
-import { Event } from '../typings/events'
+import { Event } from '../typings/discordjs';
 
 export default class EventStore {
   client: MarmokBot
