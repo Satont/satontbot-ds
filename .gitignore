@@ -1,3 +1,7 @@
 package-lock.json
 dest
 node_modules
+.env
+test.ts
+test.js
+test.json
