@@ -16,7 +16,7 @@ export class Guild extends Model<Guild> {
 
   @AllowNull(false)
   @Column(DataType.TEXT)
-  public guildId: number
+  public guildId: string
 
   @Default('!')
   @AllowNull(false)

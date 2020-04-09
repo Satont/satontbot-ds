@@ -1,4 +1,5 @@
 import MarmokBot from "../client/marmokbot";
+import { Guild } from '../models/Guild'
 
 export default class Prefix {
   client: MarmokBot
@@ -7,8 +8,10 @@ export default class Prefix {
   }
 
   async init() {
+    const guilds: Guild[] = await Guild.findAll()
+
     this.client.guilds.cache.each(async (guild) => {
-      guild.settings.prefix = '!'
+      guild.settings.prefix = guilds.find(g => g.guildId === guild.id).prefix || '!'
     })
   }
 }
