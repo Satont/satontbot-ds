@@ -8,6 +8,7 @@ export default class Prefix implements Command {
   name = 'prefix'
   description = 'Print prefix for commands on current guild.'
   aliases = ['prfx']
+  category = 'settings'
 
   constructor(client) {
     this.client = client

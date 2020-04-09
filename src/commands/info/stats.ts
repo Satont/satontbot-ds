@@ -8,7 +8,9 @@ export default class Test implements Command {
   client: MarmokBot
   name = 'stats'
   description = 'Print bot usage statistic 🤖'
-
+  category = 'info'
+  aliases = ['statistic']
+  
   constructor(client) {
     this.client = client
   }

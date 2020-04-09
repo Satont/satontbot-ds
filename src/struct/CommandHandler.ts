@@ -1,5 +1,6 @@
 import MarmokBot from "../client/marmokbot"
 import { Message } from "discord.js"
+import { Command } from "../typings/discordjs"
 
 export default class CommandHandler {
   client: MarmokBot
@@ -12,9 +13,24 @@ export default class CommandHandler {
     const prefix = msg.guild.settings.prefix
     if (!msg.content.startsWith(prefix)) return
     const args = msg.content.substring(prefix.length).split(/\s/)
-    const commandName = args[0]
 
-    const command = this.client.commands.get(commandName) || this.client.commands.find(c => c.aliases?.includes(commandName))
-    if (command) await command.run(msg, args.slice(1))
+    let command: Command = this.findCommandByCategory(args) || this.findCommandByName(args)
+
+    if (command) await command.run(msg, args)
+  }
+
+  private findCommandByCategory(args: string[]): Command | undefined {
+    const query = this.client.commands.find(command => 
+      command.category === args[0].toLowerCase() && 
+      (command.name === args[1]?.toLowerCase() || command.aliases?.includes(args[1]?.toLowerCase()))
+    )
+
+    return query
+  }
+
+  private findCommandByName(args: string[]): Command | undefined {
+    const query = this.client.commands.get(args[0].toLowerCase()) || this.client.commands.find(c => c.aliases?.includes(args[0].toLowerCase()))
+
+    return query
   }
 }

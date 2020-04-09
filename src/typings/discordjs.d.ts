@@ -32,6 +32,7 @@ export interface Command {
   cooldown?: {
     type: 'user' | 'global',
     time: number,
-  }
+  },
+  category?: string,
 }
 
