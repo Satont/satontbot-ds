@@ -1,4 +1,5 @@
 import { Message } from 'discord.js'
+import MarmokBot from "../client/marmokbot";
 
 export interface Command {
   client?: MarmokBot,
