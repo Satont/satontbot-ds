@@ -4,6 +4,6 @@ declare module 'discord.js' {
   interface Guild {
     settings: {
       prefix?: string,
-    },
+    }
   }
 }
