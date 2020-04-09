@@ -29,7 +29,9 @@ export default class CommandHandler {
   }
 
   private findCommandByName(args: string[]): Command | undefined {
-    const query = this.client.commands.get(args[0].toLowerCase()) || this.client.commands.find(c => c.aliases?.includes(args[0].toLowerCase()))
+    const query = this.client.commands.find(command => 
+      command.name === args[0].toLowerCase() || command.aliases?.includes(args[0].toLowerCase())
+    )
 
     return query
   }
