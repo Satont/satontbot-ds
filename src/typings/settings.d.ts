@@ -1,4 +1,4 @@
-import { Guild } from "discord.js"
+/* import { Guild } from "discord.js"
 
 declare module 'discord.js' {
   interface Guild {
@@ -7,3 +7,4 @@ declare module 'discord.js' {
     }
   }
 }
+ */

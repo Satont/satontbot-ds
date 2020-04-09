@@ -11,11 +11,15 @@ export class Guild extends Model<Guild> {
   public id: number;
  
   @AllowNull(false)
+  @Column(DataType.TEXT)
+  public name: string
+
+  @AllowNull(false)
   @Column(DataType.BIGINT)
   public guildId: number
 
   @Default('!')
   @AllowNull(false)
   @Column(DataType.STRING)
-  public preifx: string
+  public prefix: string
 }

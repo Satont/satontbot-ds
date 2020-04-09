@@ -32,7 +32,6 @@ export class User extends Model<User> {
   @Column(DataType.INTEGER)
   public expirience: boolean
 
-  @Default(0)
-  @Column(DataType.TIME)
-  public expirienceTimestamp: Date | number
+  @Column
+  public expirienceTimestamp: number
 }

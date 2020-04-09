@@ -8,7 +8,6 @@ export default class Prefix {
 
   async init() {
     this.client.guilds.cache.each(async (guild) => {
-      guild.settings = {}
       guild.settings.prefix = '!'
     })
   }
