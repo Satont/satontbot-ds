@@ -1,5 +1,5 @@
 import { Client } from 'discord.js'
-import EventStore from '../base/EventStore'
+import EventStore from '../stores/EventStore'
 import config from '../data/config'
 
 export default class MarmokBot extends Client {
@@ -14,6 +14,8 @@ export default class MarmokBot extends Client {
     this.on('ready', async () => {
       await new EventStore(this).loadEvents()
     })
+    this.user.setStatus('dnd')
+    this.user.setActivity({ type: 'WATCHING', name: `${this.users.cache.size} users` })
   }
 }
 

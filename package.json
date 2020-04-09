@@ -7,7 +7,8 @@
     "build": "tsc",
     "clear": "rm -rf dest",
     "start": "node ./dest/index",
-    "migration:make": "npx knex migration:make"
+    "migrate": "npx knex migrate:latest",
+    "migrate:make": "npx knex migrate:make"
   },
   "author": "Satont <satontworldwide@gmail.com>",
   "license": "ISC",
@@ -21,7 +22,7 @@
     "discord.js": "^12.1.1",
     "dotenv": "^8.2.0",
     "knex": "^0.20.13",
-    "pg": "^8.0.0",
+    "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.6",
     "sequelize-typescript": "^1.1.0",

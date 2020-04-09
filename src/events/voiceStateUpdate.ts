@@ -14,7 +14,7 @@ export default class VoiceStateUpdate implements Event {
 
   async init() {
     this.voiceChannels.set('696000042556719200', '696000042556719197')
-    this.delete()
+    this.delete().then(() => this.client.setInterval(() => this.delete(), 30 * 1000))
   }
 
   async run(oldState: VoiceState, newState: VoiceState) {

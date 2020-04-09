@@ -9,3 +9,7 @@ const start = () => {
   if (!bot.connected) return setTimeout(() => start(), 500)
 }
 start()
+
+process.on('exit', () => {
+  bot.destroy()
+})

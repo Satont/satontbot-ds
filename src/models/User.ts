@@ -5,7 +5,6 @@ import { Table, Column, Model, Unique, PrimaryKey, AllowNull, DataType, Default 
 })
 export class User extends Model<User> {
   @AllowNull(false)
-  @Unique
   @PrimaryKey
   @Column
   public id: number;
@@ -18,7 +17,7 @@ export class User extends Model<User> {
   @Column(DataType.BIGINT)
   public guildId: number
 
-  @Column
+  @Column(DataType.TEXT)
   public username: string
 
   @Default(0)
