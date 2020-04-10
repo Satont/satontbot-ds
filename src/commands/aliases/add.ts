@@ -1,7 +1,7 @@
-import { Command } from "../../../typings/discordjs";
+import { Command } from "../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
-import MarmokBot from "../../../client/marmokbot";
+import MarmokBot from "../../client/marmokbot";
 
 export default class AliasAdd implements Command {
   client: MarmokBot
@@ -14,8 +14,8 @@ export default class AliasAdd implements Command {
   }
 
   async run(message: Message, args: string[]) {
-    const commandName = args[2].toLocaleLowerCase()
-    const aliasName = args[3].toLocaleLowerCase()
+    const commandName = args[0].toLocaleLowerCase()
+    const aliasName = args[1].toLocaleLowerCase()
 
     if (!commandName || !aliasName) return
     

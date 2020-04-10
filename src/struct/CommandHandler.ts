@@ -22,9 +22,14 @@ export default class CommandHandler {
       args = msg.content.substring(prefix.length).split(/\s/)
     }
 
-    let command: Command = this.findCommandByCategory(args) || this.findCommandByName(args)
+    let command: Command = this.findCommandByCategory(args)
 
-    if (command) await command.run(msg, args)
+    if (command) {
+      await command.run(msg, args.slice(2))
+    } else {
+      command = this.findCommandByName(args)
+      if (command) await command.run(msg, args.slice(1))
+    }
   }
 
   private findCommandByCategory(args: string[]): Command | undefined {
