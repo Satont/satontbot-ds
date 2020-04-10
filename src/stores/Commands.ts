@@ -3,7 +3,6 @@ import { resolve } from 'path'
 import getFiles from '../helpers/getFiles'
 import { Command } from '../typings/discordjs';
 import { Alias } from '../models/Alias'
-import { remove } from 'lodash'
 
 export default class CommandStore {
   client: MarmokBot
