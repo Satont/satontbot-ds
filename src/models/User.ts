@@ -23,7 +23,7 @@ export class User extends Model<User> {
 
   @Default(0)
   @Column(DataType.INTEGER)
-  public time: boolean
+  public time: number
 
   @Default(0)
   @Column(DataType.INTEGER)
