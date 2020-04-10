@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import getFiles from '../helpers/getFiles'
 import { Command } from '../typings/discordjs';
 import { Alias } from '../models/Alias'
+import { remove } from 'lodash'
 
 export default class CommandStore {
   client: MarmokBot
@@ -43,5 +44,20 @@ export default class CommandStore {
     })
 
     command.aliases.push(alias)
+  }
+
+  async removeAlias(commandName: string, aliasName: string) {
+    commandName = commandName.toLocaleLowerCase()
+    aliasName = aliasName.toLocaleLowerCase()
+    const command = this.client.commands.get(commandName)
+    
+    if (!command) throw new Error('Command not found')
+
+    const alias: Alias = await Alias.findOne({ where: { name: aliasName }})
+
+    if (alias) {
+      await alias.destroy()
+      command.aliases = remove(command.aliases, aliasName)
+    }
   }
 }
