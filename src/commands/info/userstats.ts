@@ -21,7 +21,7 @@ const shortEnglish = require('humanize-duration').humanizer({
 export default class UserStats implements Command {
   client: MarmokBot
   name = 'me'
-  description = 'Print user statistic'
+  description = 'Shows user statistic. 📊'
   category = 'info'
   aliases = ['userinfo']
   
