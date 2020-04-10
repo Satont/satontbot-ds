@@ -6,7 +6,7 @@ import MarmokBot from "../../../client/marmokbot";
 export default class Prefix implements Command {
   client: MarmokBot
   name = 'prefix'
-  description = 'Print prefix for commands on current guild.'
+  description = 'Print prefix for commands on current guild. 🔧'
   aliases = ['prfx']
 
   constructor(client) {

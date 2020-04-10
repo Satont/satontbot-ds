@@ -6,7 +6,7 @@ import MarmokBot from "../../client/marmokbot";
 export default class AliasAdd implements Command {
   client: MarmokBot
   name = 'add'
-  description = 'Add alias for some command.'
+  description = 'Add alias for some command. ➕'
   category = 'alias'
 
   constructor(client) {

@@ -6,7 +6,7 @@ import MarmokBot from "../../client/marmokbot";
 export default class Test implements Command {
   client: MarmokBot
   name = 'commands'
-  description = 'Print bot command list.'
+  description = 'Print bot command list. 📄'
   aliases = ['cmds', 'help']
   
   constructor(client) {
