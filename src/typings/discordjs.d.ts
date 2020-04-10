@@ -1,6 +1,7 @@
-import { Client, ClientEvents, Guild, Message } from "discord.js";
+import { Client, ClientEvents, Guild, Message, GuildMember } from "discord.js";
 import MarmokBot from "../client/marmokbot";
 import Settings from "../stores/Settings";
+import { User as DBUser } from "../models/User";
 
 declare module 'discord.js' {
   export interface Client {
@@ -17,6 +18,9 @@ declare module 'discord.js' {
     settings: {
       prefix?: string
     }
+  }
+  export interface GuildMember {
+    db: DBUser
   }
 }
 
