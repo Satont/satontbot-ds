@@ -2,6 +2,8 @@ import { Client, ClientEvents, Guild, Message, GuildMember } from "discord.js";
 import MarmokBot from "../client/marmokbot";
 import Settings from "../stores/Settings";
 import { User as DBUser } from "../models/User";
+import CommandStore from "../stores/Commands";
+import EventStore from "../stores/Events";
 
 declare module 'discord.js' {
   export interface Client {
@@ -9,6 +11,8 @@ declare module 'discord.js' {
     events: Collection<string, Event>,
     commands: Collection<string, Command>,
     stores?: {
+      commands: CommandStore,
+      events: EventStore,
       settings: {
         prefix: import('../settings/prefix').default
       }

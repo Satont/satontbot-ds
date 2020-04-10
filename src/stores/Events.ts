@@ -8,8 +8,11 @@ export default class EventStore {
 
   constructor(client: MarmokBot) {
     this.client = client
+    this.setStore()
   }
-
+  private setStore() {
+    this.client.stores.events = this
+  }
   async load() {
     const eventFiles = readdirSync(resolve(__dirname, '..', 'events'))
 

@@ -10,8 +10,11 @@ export default class CommandStore {
 
   constructor(client: MarmokBot) {
     this.client = client
+    this.setStore()
   }
-
+  private setStore() {
+    this.client.stores.commands = this
+  }
   async load() {
     const commandFiles: string[] = []
     for await (const file of getFiles(resolve(__dirname, '..', 'commands'))) commandFiles.push(file)
@@ -46,10 +49,9 @@ export default class CommandStore {
     command.aliases.push(alias)
   }
 
-  async removeAlias(commandName: string, aliasName: string) {
-    commandName = commandName.toLocaleLowerCase()
+  async removeAlias(aliasName: string) {
     aliasName = aliasName.toLocaleLowerCase()
-    const command = this.client.commands.get(commandName)
+    const command = this.client.commands.find(c => c.aliases.includes(aliasName))
     
     if (!command) throw new Error('Command not found')
 
@@ -57,7 +59,8 @@ export default class CommandStore {
 
     if (alias) {
       await alias.destroy()
-      command.aliases = remove(command.aliases, aliasName)
+      const index = command.aliases.indexOf(aliasName)
+      command.aliases.splice(index, 1)
     }
   }
 }
