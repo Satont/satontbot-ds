@@ -2,6 +2,7 @@ import MarmokBot from '../client/marmokbot'
 import { resolve } from 'path'
 import getFiles from '../helpers/getFiles'
 import { Command } from '../typings/discordjs';
+import { Alias } from '../models/Alias'
 
 export default class CommandStore {
   client: MarmokBot
@@ -20,9 +21,27 @@ export default class CommandStore {
       if (typeof command.init === 'function') {
         await command.init()
       }
+      const dbAliases: string[] = (await Alias.findAll({ where: { command: command.name }})).map((alias: Alias) => alias.name)
+      if (!command.aliases || !command.aliases.length) command.aliases = []
+      else if (dbAliases.length) command.aliases = [...command.aliases, ...dbAliases].filter((v, i, a) => a.indexOf(v) === i)
 
       this.client.commands.set(command.name, command)
     }
     console.log(commandFiles.length + ' commands was loaded.')
+  }
+
+  async addAlias(commandName: string, alias: string) {
+    commandName = commandName.toLocaleLowerCase()
+    alias = alias.toLocaleLowerCase()
+    const command = this.client.commands.get(commandName)
+    
+    if (!command) throw new Error('Command not found')
+
+    await Alias.create({
+      command: command.name,
+      name: alias,
+    })
+
+    command.aliases.push(alias)
   }
 }

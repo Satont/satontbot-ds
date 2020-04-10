@@ -28,19 +28,19 @@ export default class Test implements Command {
     }
     for (const [name, commands] of Object.entries(categories).filter(([name]) => name !== 'undefined')) {
       if (name === 'main') {
-        const list = commands.map(c => `${message.guild.settings.prefix + c.name} ${c.aliases ? `(${c.aliases.join(',')})` : ''} ${c.description ? '— ' + c.description : ''}`)
+        const list = commands.map(c => `${message.guild.settings.prefix + c.name} ${c.aliases.length ? `(${c.aliases.join(',')})` : ''} ${c.description ? '— ' + c.description : ''}`)
         const embed = new MessageEmbed()
           .setTitle('Main commands')
           .setDescription(`That means command have no category. \n
-            • ${list.join('\n •')}
+            • ${list.join('\n • ')}
           `)
 
         message.channel.send(embed)
       } else {
-        const list = commands.map(c => `${message.guild.settings.prefix}${c.category} ${c.name} ${c.aliases ? `(${c.aliases.join(',')})` : ''} ${c.description ? '— ' + c.description : ''}`)
+        const list = commands.map(c => `${message.guild.settings.prefix}${c.category} ${c.name} ${c.aliases.length ? `(${c.aliases.join(',')})` : ''} ${c.description ? '— ' + c.description : ''}`)
         const embed = new MessageEmbed()
           .setTitle(name.charAt(0).toLocaleUpperCase() + name.substring(1))
-          .setDescription(`• ${list.join('\n •')}`)
+          .setDescription(`• ${list.join('\n • ')}`)
         message.channel.send(embed)
       }
     }
