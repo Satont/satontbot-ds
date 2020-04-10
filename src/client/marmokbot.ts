@@ -18,12 +18,19 @@ export default class MarmokBot extends Client {
     this.init()
   }
   async init() {
+    this.setStores()
     await this.login(config.DISCORD.token)
     this.on('ready', async () => {
       await new EventStore(this).load()
       await new CommandStore(this).load()
       await new SettingsStore(this).load()
+      await this.updateActivity().then(() => this.setInterval(() => this.updateActivity(), 1 * 60 * 1000))
     })
+  }
+  private setStores() {
+    this.stores = {} as any
+  }
+  async updateActivity() {
     this.user.setStatus('dnd')
     this.user.setActivity({ type: 'WATCHING', name: `${this.users.cache.size} users` })
   }

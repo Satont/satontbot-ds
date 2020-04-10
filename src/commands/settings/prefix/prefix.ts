@@ -1,14 +1,13 @@
-import { Command } from "../../typings/discordjs";
+import { Command } from "../../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
-import MarmokBot from "../../client/marmokbot";
+import MarmokBot from "../../../client/marmokbot";
 
 export default class Prefix implements Command {
   client: MarmokBot
   name = 'prefix'
   description = 'Print prefix for commands on current guild.'
   aliases = ['prfx']
-  category = 'settings'
 
   constructor(client) {
     this.client = client

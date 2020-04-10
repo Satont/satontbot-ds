@@ -1,11 +1,17 @@
 import { Client, ClientEvents, Guild, Message } from "discord.js";
 import MarmokBot from "../client/marmokbot";
+import Settings from "../stores/Settings";
 
 declare module 'discord.js' {
   export interface Client {
     connected: boolean,
     events: Collection<string, Event>,
-    commands: Collection<string, Command>
+    commands: Collection<string, Command>,
+    stores?: {
+      settings: {
+        prefix: import('../settings/prefix').default
+      }
+    }
   }
   export interface Guild {
     settings: {
