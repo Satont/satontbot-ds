@@ -11,8 +11,16 @@ export default class CommandHandler {
 
   async process(msg: Message) {
     const prefix = msg.guild.settings.prefix
-    if (!msg.content.startsWith(prefix)) return
-    const args = msg.content.substring(prefix.length).split(/\s/)
+    const doesToBotMention = msg.content.startsWith(`<@!${this.client.user.id}>`)
+
+    if (!msg.content.startsWith(prefix) && !doesToBotMention) return
+    
+    let args: string[]
+    if (doesToBotMention) {
+      args = msg.content.substring(`<@!${this.client.user.id}>`.length).split(/\s/).slice(1)
+    } else {
+      args = msg.content.substring(prefix.length).split(/\s/)
+    }
 
     let command: Command = this.findCommandByCategory(args) || this.findCommandByName(args)
 
