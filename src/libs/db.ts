@@ -23,8 +23,9 @@ sequelize.authenticate()
     sequelize.sync().then(() => connected = true).then(() => console.info('Succesfuly connected to db.'))
   })
   .catch((err) => {
-    console.log(err)
-    process.exit()
+    console.error(err)
+    console.info(`Can't connect to db. Please, check your config and error above.`)
+    process.exit(1)
   })
 
 
