@@ -1,3 +1,12 @@
+import { resolve } from 'path'
+import { readdirSync } from 'fs'
+
+// extends should be readed before other staff
+const extendsPath = resolve(__dirname, '..', 'extends')
+const extendsList = readdirSync(extendsPath)
+for (const extend of extendsList) require(`${extendsPath}/${extend}`)
+//
+
 import { Client } from 'discord.js'
 import config from '../data/config'
 import { Collection } from 'discord.js'
