@@ -31,7 +31,6 @@ export default class Settings {
 
   async init() {
     for await (const [, guild] of this.client.guilds.cache) {
-      guild.settings = {}
       try {
         const [created, isNew]: [Guild, boolean] = await Guild.findOrCreate({
           where: { guildId: guild.id },
