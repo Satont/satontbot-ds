@@ -15,16 +15,6 @@ export default class Ready implements Event {
   }
 
   async run(message: Message) {
-    await this.findOrUpdateUser(message)
     await this.commandHandler.process(message)
-  }
-
-  async findOrUpdateUser(message: Message) {
-    const [user] = await User.findOrCreate({
-      where: { guildId: message.guild.id, userId: message.member.id },
-      defaults: { guildId: message.guild.id, userId: message.member.id, username: message.author.username }
-    })
-
-    message.member.db = user
   }
 }

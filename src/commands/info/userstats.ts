@@ -33,7 +33,7 @@ export default class UserStats implements Command {
     const accountAge = humanize(Date.now() - message.author.createdTimestamp, { units: ['y', 'd', 'h', 'm', 's'], round: true, largest: 3 })
     const joinAge = humanize(Date.now() - message.member.joinedTimestamp , { units: ['y', 'd', 'h', 'm', 's'], round: true, largest: 3 })
     const member = message.mentions.members.first() || message.member
-    const dbUser: User = await User.findOne({ where: { guildId: message.guild.id, userId: member.id }})
+    const dbUser = await member.fetchDbData()
 
     const embed = new MessageEmbed()
       .setThumbnail(member.user.avatarURL())
