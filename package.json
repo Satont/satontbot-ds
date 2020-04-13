@@ -1,7 +1,7 @@
 {
-  "name": "marmokbot",
-  "version": "4.0.0",
-  "description": "MarmokBot rewritten in typecsript",
+  "name": "satontbot-ds",
+  "version": "0.5.0",
+  "description": "satontbot-ds rwitten in typecsript",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

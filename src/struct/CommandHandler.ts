@@ -1,9 +1,9 @@
-import MarmokBot from "../client/marmokbot"
+import SatontBot from "../client/satontbot"
 import { Message } from "discord.js"
 import { Command } from "../typings/discordjs"
 
 export default class CommandHandler {
-  client: MarmokBot
+  client: SatontBot
 
   constructor(client) {
     this.client = client

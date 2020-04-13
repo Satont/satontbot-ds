@@ -1,12 +1,12 @@
-import MarmokBot from '../client/marmokbot'
+import SatontBot from '../client/satontbot'
 import { resolve } from 'path'
 import getFiles from '../helpers/getFiles'
 import { Guild } from '../models/Guild'
 
 export default class Settings {
-  client: MarmokBot
+  client: SatontBot
 
-  constructor(client: MarmokBot) {
+  constructor(client: SatontBot) {
     this.client = client
   }
   private setSettings() {

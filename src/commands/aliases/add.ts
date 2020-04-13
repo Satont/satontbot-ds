@@ -1,10 +1,10 @@
 import { Command } from "../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
-import MarmokBot from "../../client/marmokbot";
+import SatontBot from "../../client/satontbot";
 
 export default class AliasAdd implements Command {
-  client: MarmokBot
+  client: SatontBot
   name = 'add'
   description = 'Add alias for some command. ➕'
   category = 'alias'

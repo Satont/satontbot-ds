@@ -1,12 +1,12 @@
 import { Event } from '../typings/discordjs'
-import MarmokBot from '../client/marmokbot'
+import SatontBot from '../client/satontbot'
 
 export default class Ready implements Event {
   once = true
   name = 'ready'
-  client: MarmokBot
+  client: SatontBot
 
-  constructor(client: MarmokBot) {
+  constructor(client: SatontBot) {
     this.client = client
   }
 

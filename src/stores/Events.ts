@@ -1,12 +1,12 @@
-import MarmokBot from '../client/marmokbot'
+import SatontBot from '../client/satontbot'
 import { resolve } from 'path'
 import { readdirSync } from 'fs'
 import { Event } from '../typings/discordjs';
 
 export default class EventStore {
-  client: MarmokBot
+  client: SatontBot
 
-  constructor(client: MarmokBot) {
+  constructor(client: SatontBot) {
     this.client = client
     this.setStore()
   }

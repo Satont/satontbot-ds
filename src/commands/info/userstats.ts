@@ -1,7 +1,7 @@
 import { Command } from "../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
-import MarmokBot from "../../client/marmokbot";
+import SatontBot from "../../client/satontbot";
 import humanize from 'humanize-duration'
 import { User } from "../../models/User";
 
@@ -19,7 +19,7 @@ const shortEnglish = require('humanize-duration').humanizer({
 })
 
 export default class UserStats implements Command {
-  client: MarmokBot
+  client: SatontBot
   name = 'me'
   description = 'Shows user statistic. 📊'
   category = 'info'

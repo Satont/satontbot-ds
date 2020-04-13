@@ -1,13 +1,13 @@
-import MarmokBot from '../client/marmokbot'
+import SatontBot from '../client/satontbot'
 import { resolve } from 'path'
 import getFiles from '../helpers/getFiles'
 import { Command } from '../typings/discordjs';
 import { Alias } from '../models/Alias'
 
 export default class CommandStore {
-  client: MarmokBot
+  client: SatontBot
 
-  constructor(client: MarmokBot) {
+  constructor(client: SatontBot) {
     this.client = client
     this.setStore()
   }

@@ -3,12 +3,12 @@ import 'source-map-support/register'
 require('dotenv').config()
 
 import { connected as DBConnected } from './libs/db'
-import MarmokBot from './client/marmokbot'
-let bot: MarmokBot
+import SatontBot from './client/satontbot'
+let bot: SatontBot
 
 const start = () => {
   if (!DBConnected) return setTimeout(() => start(), 500)
-  bot = new MarmokBot()
+  bot = new SatontBot()
 }
 start()
 

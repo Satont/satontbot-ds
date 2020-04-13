@@ -1,5 +1,5 @@
 import { Client, ClientEvents, Guild, Message, GuildMember } from "discord.js";
-import MarmokBot from "../client/marmokbot";
+import SatontBot from "../client/satontbot";
 import Settings from "../stores/Settings";
 import { User as DBUser } from "../models/User";
 import CommandStore from "../stores/Commands";
@@ -30,7 +30,7 @@ declare module 'discord.js' {
 }
 
 export interface Event {
-  client?: MarmokBot
+  client?: SatontBot
   name: string,
   run(...args: ClientEvents[keyof ClientEvents]): Promise<void> | void,
   init?(): Promise<any> | any | void,
@@ -38,7 +38,7 @@ export interface Event {
 }
 
 export interface Command {
-  client?: MarmokBot,
+  client?: SatontBot,
   name: string,
   run(message: Message, args: string[]): Promise<any> | any | void,
   init?(): Promise<any> | any | void,

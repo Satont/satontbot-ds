@@ -1,11 +1,11 @@
 import { Command } from "../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
-import MarmokBot from "../../client/marmokbot";
+import SatontBot from "../../client/satontbot";
 import humanize from 'humanize-duration'
 
 export default class Test implements Command {
-  client: MarmokBot
+  client: SatontBot
   name = 'stats'
   description = 'Print bot usage statistic 🤖'
   category = 'info'

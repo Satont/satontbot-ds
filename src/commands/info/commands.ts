@@ -1,10 +1,10 @@
 import { Command } from "../../typings/discordjs";
 import { Message } from "discord.js";
 import { MessageEmbed } from "discord.js";
-import MarmokBot from "../../client/marmokbot";
+import SatontBot from "../../client/satontbot";
 
 export default class Test implements Command {
-  client: MarmokBot
+  client: SatontBot
   name = 'commands'
   description = 'Print bot command list. 📄'
   aliases = ['cmds', 'help']

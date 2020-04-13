@@ -1,9 +1,9 @@
-import MarmokBot from "../client/marmokbot";
+import SatontBot from "../client/satontbot";
 import { Guild } from '../models/Guild'
 import { Guild as DJSGuild } from 'discord.js'
 
 export default class Prefix {
-  client: MarmokBot
+  client: SatontBot
   constructor(client) {
     this.client = client
   }

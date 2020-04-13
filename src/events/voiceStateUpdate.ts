@@ -1,10 +1,10 @@
 import { Event } from '../typings/discordjs'
 import { VoiceState } from 'discord.js'
-import MarmokBot from '../client/marmokbot'
+import SatontBot from '../client/satontbot'
 import { CategoryChannel } from 'discord.js'
 
 export default class VoiceStateUpdate implements Event {
-  client: MarmokBot
+  client: SatontBot
   name = 'voiceStateUpdate'
   voiceChannels: Map<string, string> = new Map()
 
