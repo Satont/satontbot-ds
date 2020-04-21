@@ -24,7 +24,6 @@ declare module 'discord.js' {
     }
   }
   export interface GuildMember {
-    db: DBUser,
     fetchDbData(): Promise<DBUser>
   }
 }
