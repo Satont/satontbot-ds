@@ -1,14 +1,15 @@
 import { Event } from '../typings/discordjs'
-import { VoiceState } from 'discord.js'
+import { GuildMember } from 'discord.js'
 import SatontBot from '../client/satontbot'
 import { CategoryChannel } from 'discord.js'
+import { GuildChannel } from 'discord.js'
 
 export default class VoiceStateUpdate implements Event {
   client: SatontBot
-  name = 'voiceStateUpdate'
+  name = 'voiceChannelJoin'
   voiceChannels: Map<string, string> = new Map()
 
-  constructor(client) {
+  constructor(client: SatontBot) {
     this.client = client
   }
 
@@ -18,27 +19,24 @@ export default class VoiceStateUpdate implements Event {
     this.client.setInterval(() => this.delete(), 30 * 1000)
   }
 
-  async run(oldState: VoiceState, newState: VoiceState) {
-    await this.create(oldState, newState)
-  }
+  async run(member: GuildMember, channel: GuildChannel) {
+    const storedChannel = this.voiceChannels.get(channel.id)
+    if (!storedChannel) return;
+    
+    const channelForMember = await this.client.guilds.cache.get(member.guild.id).channels
+      .create(`Channel for ${member.displayName}`, {
+        type: 'voice',
+        parent: storedChannel
+      })
 
-  async create(oldState: VoiceState, newState: VoiceState) {
-    const storedChannel = this.voiceChannels.get(newState.channelID)
-    if (storedChannel) {
-      const channel = await this.client.guilds.cache.get(newState.guild.id).channels
-        .create(`Channel for ${newState.member.displayName}`, {
-          type: 'voice',
-          parent: storedChannel
-        })
-      await newState.setChannel(channel)
-      await channel.overwritePermissions([
-        {
-          type: 'member',
-          id: newState.member.id,
-          allow: "MANAGE_CHANNELS"
-        }
-      ])
-    }
+    await member.voice.setChannel(channelForMember)
+    await channelForMember.overwritePermissions([
+      {
+        type: 'member',
+        id: member.id,
+        allow: "MANAGE_CHANNELS"
+      }
+    ])
   }
 
   async delete() {
