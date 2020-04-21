@@ -27,11 +27,11 @@ export class User extends Model<User> {
 
   @Default(0)
   @Column(DataType.INTEGER)
-  public messages: boolean
+  public messages: number
 
   @Default(0)
   @Column(DataType.INTEGER)
-  public expirience: boolean
+  public expirience: number
 
   @Column
   public expirienceTimestamp: number
