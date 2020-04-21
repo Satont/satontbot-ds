@@ -23,6 +23,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "cross-env": "^7.0.2",
+    "discord-logs": "^1.7.5",
     "discord.js": "^12.1.1",
     "dotenv": "^8.2.0",
     "humanize-duration": "^3.22.0",

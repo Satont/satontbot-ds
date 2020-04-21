@@ -32,7 +32,7 @@ declare module 'discord.js' {
 export interface Event {
   client?: SatontBot
   name: string,
-  run(...args: ClientEvents[keyof ClientEvents]): Promise<void> | void,
+  run(...args: ClientEvents[keyof ClientEvents] | any): Promise<void> | void,
   init?(): Promise<any> | any | void,
   once?: boolean,
 }
