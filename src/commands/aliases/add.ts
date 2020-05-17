@@ -8,12 +8,26 @@ export default class AliasAdd implements Command {
   name = 'add'
   description = 'Add alias for some command. ➕'
   category = 'alias'
+  example = 'alias add cmds commands'
+  args = {
+    'commandName': {
+      type: 'string',
+      description: 'name of command'
+    },
+    'aliasName': {
+      type: 'string',
+      description: 'name of alias'
+    }
+  }
 
   constructor(client) {
     this.client = client
   }
 
   async run(message: Message, args: string[]) {
+    if (!args[0]) throw 'You missed name of command.'
+    if (!args[1]) throw 'You missed alias for ${args[0]} command.'
+
     const commandName = args[0].toLocaleLowerCase()
     const aliasName = args[1].toLocaleLowerCase()
 
