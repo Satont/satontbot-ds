@@ -17,7 +17,7 @@ export default class Prefix implements Command {
     await this.client.stores.settings.prefix.update(message.guild, args[0])
     const embed = new MessageEmbed()
       .setColor('03fcdf')
-      .setDescription(`Prefix was updated to "${args[2]}"`)
+      .setDescription(`Prefix was updated to "${args[0]}"`)
 
     return message.reply(embed)
   }
