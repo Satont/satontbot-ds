@@ -10,9 +10,9 @@ const sequelize = new Sequelize(config.DB.name, config.DB.username, config.DB.pa
   dialect: 'postgres',
   pool: {
     max: 10,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
+    min: 1,
+    acquire: 3000,
+    idle: 1000
   },
   models: [join(__dirname, '../models')],
   logging: false
@@ -20,7 +20,8 @@ const sequelize = new Sequelize(config.DB.name, config.DB.username, config.DB.pa
 
 sequelize.authenticate()
   .then(() => {
-    sequelize.sync().then(() => connected = true).then(() => console.info('Succesfuly connected to db.'))
+    console.info('Succesfuly connected to db.')
+    connected = true
   })
   .catch((err) => {
     console.error(err)
