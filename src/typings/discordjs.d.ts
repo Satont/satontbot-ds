@@ -31,7 +31,7 @@ declare module 'discord.js' {
 export interface Event {
   client?: SatontBot
   name: string,
-  run(...args: ClientEvents[keyof ClientEvents] | any): Promise<void> | void,
+  run(...args: any): Promise<void | any> | void | any,
   init?(): Promise<any> | any | void,
   once?: boolean,
 }
@@ -48,5 +48,12 @@ export interface Command {
     time: number,
   },
   category?: string,
+  example?: string,
+  args?: {
+    [x: string]: {
+      type: any,
+      description: any,
+    }
+  }
 }
 

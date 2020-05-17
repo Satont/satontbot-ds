@@ -1,5 +1,5 @@
 import SatontBot from "../client/satontbot"
-import { Message } from "discord.js"
+import { Message, MessageEmbed } from "discord.js"
 import { Command } from "../typings/discordjs"
 
 export default class CommandHandler {
@@ -11,12 +11,16 @@ export default class CommandHandler {
 
   async process(msg: Message, args: string[]) {
     let command: Command = this.findCommandByCategory(args)
-
-    if (command) {
-      await command.run(msg, args.slice(2))
-    } else {
-      command = this.findCommandByName(args)
-      if (command) await command.run(msg, args.slice(1))
+    try {
+      if (command) {
+        await command.run(msg, args.slice(2))
+      } else {
+        command = this.findCommandByName(args)
+        if (command) await command.run(msg, args.slice(1))
+      }
+    } catch (e) {
+      if (e instanceof Error) return msg.reply(`error in bot code. Please, please feedback to administrator.`)
+      else msg.reply(this.buildErrorEmbed({ errorMessage: e, prefix: msg.guild.settings.prefix, example: command.example, commandArgs: command.args }))
     }
   }
 
@@ -35,5 +39,27 @@ export default class CommandHandler {
     )
 
     return query
+  }
+
+  buildErrorEmbed({ errorMessage, example, prefix, commandArgs }: { errorMessage: string, example?: string, prefix: string, commandArgs: Command["args"] }) {
+    const embed = new MessageEmbed({
+      color: 'FD0000',
+      title: errorMessage,
+      fields: []
+    })
+    if (example) {
+      embed.description = `Example of usage: \`${prefix}${example}\`\nList of arguments:`
+    }
+    if (commandArgs) {
+      for (const [argName, argOpts] of Object.entries(commandArgs)) {
+        embed.fields.push({
+          name: `${argName}(${argOpts.type})`,
+          value: argOpts.description,
+          inline: true,
+        })
+      }
+    }
+
+    return embed
   }
 }
